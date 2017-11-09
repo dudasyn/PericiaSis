@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="coffeespace.com.br.periciasis"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="357411178280-b8evirr91lqck7n0917uptr0j28hog7i.apps.googleusercontent.com" />
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
+    <application
+        android:name="android.support.multidex.MultiDexApplication"
+        android:allowBackup="true"
+        android:configChanges="orientation|screenSize|keyboardHidden"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="coffeespace.com.br.periciasis.Activitys.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="coffeespace.com.br.periciasis.Activitys.VeiculosActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Activitys.IpafActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Activitys.LocalActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Activitys.ConcDinActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Activitys.CapturaActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Activitys.PreferencesActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Activitys.Settings" />
+        <activity android:name="coffeespace.com.br.periciasis.Google.CreateEmptyFileActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Google.CreateFileInAppFolderActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Google.TestGoogleActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Activitys.DanoActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Google.CreateFileInFolderActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Google.CreateFile" />
+        <activity android:name="coffeespace.com.br.periciasis.Google.PickFileWithOpenerActivity" />
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="26.1.0" />
+
+        <activity
+            android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity"
+            android:exported="false"
+            android:label=""
+            android:theme="@style/EasyPermissions.Transparent" />
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="android.arch.lifecycle.VERSION"
+            android:value="27.0.0-SNAPSHOT" />
+    </application>
+
+</manifest>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:title="Perito"
+        android:key="@string/nome_perito"
+        android:hint="Nome do profissional"
+        android:summary="Nome do perito"/>
+    <EditTextPreference
+        android:title="ID"
+        android:key="@string/id_perito"
+        android:summary="Identificação"/>
+
+
+
+    <EditTextPreference
+        android:title="Lotação"
+        android:key="@string/lot_perito"
+        android:summary="Lotação do perito"/>
+    <EditTextPreference
+        android:title="Orgão"
+        android:key="@string/org_perito"
+        android:summary="Orgão do perito"/>
+
+    <EditTextPreference
+        android:title="Matrícula"
+        android:key="mat_perito"
+        android:hint="Matrícula"
+        android:summary="Matrícula do Perito"/>
+
+    <EditTextPreference
+        android:title="Endereço da lotação"
+        android:key="end_perito"
+        android:hint="Endereço"
+        android:summary="Endereço da lotação"/>
+    <!--
+    <SwitchPreference
+        android:title="Switch Preference"
+        android:key="switch"
+        android:summary="Switch false"/>
+
+    <SwitchPreference
+        android:key="switch_active"
+        android:summary="This switch is active"
+        android:defaultValue="true"
+        android:title="Switch Checked"/>
+    <ListPreference
+        android:key="list_preference"
+        android:title="List Preference"
+        android:entries="@array/lists"
+        android:entryValues="@array/lists"/>
+
+    <ListPreference
+        android:key="list_with_default_values"
+        android:defaultValue="One"
+        android:title="List With Default Values"
+        android:entries="@array/lists"
+        android:entryValues="@array/lists"/>
+ -->
+</PreferenceScreen>

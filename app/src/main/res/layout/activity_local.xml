@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="coffeespace.com.br.periciasis.Activitys.LocalActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/lblocalsimples"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:text="Constatação Aberta"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/editlocal"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:elevation="1dp"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="(texto livre) Cuidado com o português: Trata-se ... dotado de 3 quartos, sala, cozinha, banheiro, com 2 pavimentos"
+                android:inputType="text|textMultiLine"
+
+                android:scrollbars="vertical" />
+
+
+        </LinearLayout>
+
+       <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/lbpresevado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Local preservado"
+                android:textSize="24sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <EditText
+                android:id="@+id/editdapreservacao"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:elevation="1dp"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="Coloque as circunstâncias da preservação ou não do local - Exemplo Local acautelado por policiamento ostensivo a cargo da PMERJ..."
+                android:inputType="text|textMultiLine"
+
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/btinserirlocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Constatar" />
+
+            <Button
+                android:id="@+id/btsairlocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voltar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

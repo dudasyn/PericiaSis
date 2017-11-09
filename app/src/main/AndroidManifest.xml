@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="coffeespace.com.br.periciasis">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="357411178280-b8evirr91lqck7n0917uptr0j28hog7i.apps.googleusercontent.com" />
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
+    <application
+        android:name="android.support.multidex.MultiDexApplication"
+        android:configChanges="orientation|screenSize|keyboardHidden"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activitys.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activitys.VeiculosActivity" />
+        <activity android:name=".Activitys.IpafActivity" />
+        <activity android:name=".Activitys.LocalActivity" />
+        <activity android:name=".Activitys.ConcDinActivity" />
+        <activity android:name=".Activitys.CapturaActivity" />
+        <activity android:name=".Activitys.PreferencesActivity" />
+        <activity android:name=".Activitys.Settings" />
+        <activity android:name=".Google.CreateEmptyFileActivity" />
+        <activity android:name=".Google.CreateFileInAppFolderActivity" />
+        <activity android:name=".Google.TestGoogleActivity" />
+        <activity android:name=".Activitys.DanoActivity" />
+        <activity android:name=".Google.CreateFileInFolderActivity" />
+        <activity android:name=".Google.CreateFile" />
+        <activity android:name=".Google.PickFileWithOpenerActivity" />
+
+    </application>
+
+</manifest>

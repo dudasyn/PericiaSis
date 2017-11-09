@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="coffeespace.com.br.periciasis.Activitys.LaudoActivity">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+        <Button
+            android:id="@+id/btfinalizarlaudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finalizar Laudo" />
+
+        <Button
+
+            android:id="@+id/button_create_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create File"
+            android:visibility="gone"/>
+        <Button
+            android:id="@+id/button_upload_to_google_drive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="horizontal">
+
+        <WebView
+            android:id="@+id/vizualizacaodelaudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></WebView>
+
+    </LinearLayout>
+
+</LinearLayout>
