@@ -19,9 +19,8 @@ public class Pericia {
     private Ocorrencia ocorrencia;
     private Perito peritodesignado;
     private String dinamica, conclusao, local, preservacaodolocal, outroselementos,constatacao;
-    private int nobjetos;
     private Perito perito;
-    private int pos = 0;
+
 
     public Pericia() {
     }
@@ -35,6 +34,16 @@ public class Pericia {
     private ArrayList<Objeto> aObjetos = new ArrayList<Objeto>();
     private ArrayList<String> aItemConstatacao = new ArrayList<String>();
     private ArrayList<String> aItemOutrosElementos = new ArrayList<String>();
+    private ArrayList<String> aNamePictures = new ArrayList<String>(); // Array with the name of pictures
+
+
+    public ArrayList<String> getaNamePictures() {
+        return aNamePictures;
+    }
+
+    public void setaNamePictures(ArrayList<String> aNamePictures) {
+        this.aNamePictures = aNamePictures;
+    }
 
     public ArrayList<Objeto> getaObjetos() {
         return aObjetos;
@@ -56,13 +65,6 @@ public class Pericia {
     }
     public void setaItemOutrosElementos(ArrayList<String> aItemOutrosElementos) {
         this.aItemOutrosElementos = aItemOutrosElementos;
-    }
-
-    public int getPos() {
-        return pos;
-    }
-    public void setPos(int pos) {
-        this.pos = pos;
     }
 
     public String getConstatacao() {

@@ -33,9 +33,8 @@ public class DanoActivity extends AppCompatActivity {
 
            // Dano dano = new Dano();
            // dano.setTipo(editdano.getText().toString());
-            pericia.getaObjetos().get(pericia.getPos()).setAvarias(editdano.getText().toString());
-
-            Toast.makeText(DanoActivity.this, "Avaria constatada", Toast.LENGTH_SHORT).show();
+            pericia.getaObjetos().get(ExamesActivity.poslistview).setAvarias(editdano.getText().toString());
+            Toast.makeText(DanoActivity.this, "Avaria constatada no Objeto", Toast.LENGTH_SHORT).show();
 
         }
     }

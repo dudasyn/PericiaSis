@@ -26,7 +26,7 @@ import static coffeespace.com.br.periciasis.Activitys.MainActivity.pericia;
 
 public class VeiculosActivity extends AppCompatActivity {
 
-    Button btinserirveiculos; //btveiculosvoltar,
+    Button btinserirveiculos,btinserirfotoveiculos; //btveiculosvoltar,
     Spinner spinnertipoveiculo;
     EditText editplaca, editmarca, editmodelo, editestado, editmunicipio, editcor, editempresa, editnordem;
     TextView labelveiculos;
@@ -40,7 +40,7 @@ public class VeiculosActivity extends AppCompatActivity {
         String label;
         labelveiculos.setText("Inserir veiculo " + Integer.toString((MainActivity.pericia.getaVeiculosExaminados().size()) + 1));
 
-
+        btinserirfotoveiculos = (Button)findViewById(R.id.btinserirfotoveiculos);
         btinserirveiculos = (Button) findViewById(R.id.btinserirveiculos);
         spinnertipoveiculo = (Spinner) findViewById(R.id.spinnertipoveiculos);
         btinserirveiculos.setOnClickListener(new btInserirVeiculosClicked());
@@ -51,7 +51,7 @@ public class VeiculosActivity extends AppCompatActivity {
 
         editnordem = (EditText) findViewById(R.id.editnordem);
         editempresa = (EditText) findViewById(R.id.editempresa);
-
+btinserirfotoveiculos.setOnClickListener(new btInserirFotoVeiculosClicked());
         spinnertipoveiculo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -77,6 +77,12 @@ public class VeiculosActivity extends AppCompatActivity {
         return etText.getText().toString().trim().length() == 0;
     }
 
+    class btInserirFotoVeiculosClicked implements Button.OnClickListener{
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(VeiculosActivity.this, CapturaActivity.class));
+        }
+    }
     private void addFieldsInVeiculo(Veiculo v) {
 
         if (isEmpty(editmarca) == true) {

@@ -21,12 +21,13 @@ import static coffeespace.com.br.periciasis.Activitys.MainActivity.pericia;
 
 
 public class IpafActivity extends AppCompatActivity {
-    Button btinseriripaf;
+    Button btinseriripaf,btinserirfotoipaf;
     EditText editangulacao, editlocalizacao, editeixomaior, editeixomenor, editdistsolo, edittrajetoria;
     TextView labelipaf, labelobjimpactado;
     Spinner sptransfixante, spformato, sporientacao, sporigem;
     private Objeto o;
     private Ipaf ipaf;
+    static int npafs=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +37,11 @@ public class IpafActivity extends AppCompatActivity {
         labelipaf = (TextView) findViewById(R.id.labelipaf);
 
 
-        int npafs = (pericia.getaObjetos().get(ExamesActivity.poslistview).getaIpafs().size());
-        labelipaf.setText("Inserir " + (npafs +1) + "º Ipaf no objeto: ");
+         npafs = (pericia.getaObjetos().get(ExamesActivity.poslistview).getaIpafs().size());
+        labelipaf.setText("Inserir " + (npafs + 1) + "º Ipaf no objeto: ");
 
         btinseriripaf = (Button) findViewById(R.id.btinseriripaf);
-        Button btinserirfotoipaf = (Button) findViewById(R.id.btinserifotoipaf);
+         btinserirfotoipaf = (Button) findViewById(R.id.btinserifotoipaf);
         editangulacao = (EditText) findViewById(R.id.editangulacao);
         editlocalizacao = (EditText) findViewById(R.id.editlocalicacao);
         editeixomaior = (EditText) findViewById(R.id.editeixomaior);
@@ -92,7 +93,7 @@ public class IpafActivity extends AppCompatActivity {
         public void onClick(View view) {
 
 
-            //startActivity(new Intent(IpafActivity.this, CapturaActivity.class));
+            startActivity(new Intent(IpafActivity.this, CapturaActivity.class));
         }
     }
 
@@ -102,9 +103,6 @@ public class IpafActivity extends AppCompatActivity {
         public void onClick(View view) {
 
             labelipaf.setText("Inserir " + (pericia.getaObjetos().get(ExamesActivity.poslistview).getaIpafs().size() + 1) + "º Ipaf no objeto: ");
-            Log.d("TAG", "sizepaf" + pericia.getaObjetos().get(pericia.getPos()).getaIpafs().size());
-
-
 
             ipaf = new Ipaf(editlocalizacao.getText().toString());
             ipaf.setAngulacao(editangulacao.getText().toString());
@@ -150,6 +148,11 @@ public class IpafActivity extends AppCompatActivity {
         sporigem.setSelection(0);
         sptransfixante.setSelection(0);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 }

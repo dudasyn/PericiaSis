@@ -274,15 +274,13 @@
                     android:layout_height="wrap_content"
                     android:text="Inserir Veículo" />
 
-                <!--
-
 
                 <Button
-                    android:id="@+id/btveiculosvoltar"
+                    android:id="@+id/btinserirfotoveiculos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Voltar" />
-                    -->
+                    android:text="Fotografar" />
+
             </LinearLayout>
 
         </LinearLayout>

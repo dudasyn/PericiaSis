@@ -4,38 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="coffeespace.com.br.periciafinal.Activitys.CapturaActivity">
+    tools:context="coffeespace.com.br.periciasis.Activitys.CapturaActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btcapturarimagem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Capturar Foto" />
-
-        <Button
-            android:id="@+id/bttelacapturavoltar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Voltar" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <ImageView
-            android:id="@+id/imagemcapturada"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btcapturarimagem"
-            android:scaleType="centerCrop" />
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/btcapturarimagem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Capturar Foto" />
+
+            <Button
+                android:id="@+id/bttelacapturavoltar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Voltar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/imagemcapturada"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/btcapturarimagem"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

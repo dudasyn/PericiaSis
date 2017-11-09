@@ -2,12 +2,16 @@ package coffeespace.com.br.periciasis.Activitys;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +21,32 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.drive.DriveApi;
+import com.google.android.gms.drive.DriveFolder;
+import com.google.android.gms.drive.DriveId;
+import com.google.android.gms.drive.Metadata;
+import com.google.android.gms.drive.MetadataChangeSet;
+import com.google.android.gms.drive.query.Filters;
+import com.google.android.gms.drive.query.Query;
+import com.google.android.gms.drive.query.SearchableField;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
 import coffeespace.com.br.periciasis.Google.CreateFile;
 import coffeespace.com.br.periciasis.R;
 import coffeespace.com.br.periciasis.Sistema.Laudo;
+
+import static android.app.Activity.RESULT_OK;
 import static coffeespace.com.br.periciasis.Activitys.MainActivity.ocorrencia;
 import static coffeespace.com.br.periciasis.Activitys.MainActivity.pericia;
 
@@ -28,14 +54,16 @@ import static coffeespace.com.br.periciasis.Activitys.MainActivity.pericia;
  * Created by user on 01/11/2017.
  */
 
-public class LaudoActivity extends android.support.v4.app.Fragment {
+public class LaudoActivity extends android.support.v4.app.Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private Button button_create_file;
     private Button button_upload_to_google_drive;
+    File theFile;
     private GoogleApiClient mGoogleApiClient;
     private static final String TAG = "<< DRIVE >>";
     protected static final int REQUEST_CODE_RESOLUTION = 1337;
-    private String FOLDER_NAME = "Pericia";
+    private String FOLDER_NAME = "Laudos";
+    private String RAIZ = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
 
     WebView weblaudo;
     static Laudo ld;
@@ -55,22 +83,22 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.laudo, container, false);
         Button btfinalizarlaudo = (Button) view.findViewById(R.id.btfinalizarlaudo);
-/*
-         button_create_file = (Button) view.findViewById(R.id.button_create_file);
-         button_upload_to_google_drive = (Button) view.findViewById(R.id.button_upload_to_google_drive);
 
-
+        button_create_file = (Button) view.findViewById(R.id.button_create_file);
+        button_upload_to_google_drive = (Button) view.findViewById(R.id.button_upload_to_google_drive);
 
 
         button_create_file.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 //WRITE A SIMPLE TEXT FILE IN SDCARD. BE CAREFUL TO GRANT PERMISSION IN ANDROID 6+
                 writeToFile("tehfile", "<html><head><title> fuck google...</title></head><body>Just a simple text</body></html>");
             }
         });
 
         button_upload_to_google_drive.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 if (mGoogleApiClient != null) {
                     upload_to_drive();
                 } else {
@@ -78,11 +106,11 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
                 }
             }
         });
-*/
 
 
         //// MY CODE
         btfinalizarlaudo.setOnClickListener(new btFinalizarClicked());
+
         if (ocorrencia != null) {
             ld = new Laudo();
             ld.setPerito(pericia.getPeritodesignado());
@@ -99,6 +127,7 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
     class btFinalizarClicked implements Button.OnClickListener {
         @Override
         public void onClick(View view) {
+
 
             Log.d("TAG", "CRIANDO LAUDO");
 
@@ -118,6 +147,7 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
 
             ExamesActivity.listObjetos.clear();
             ExamesActivity.adapterlistobjetos.notifyDataSetChanged();
+
 
         }
 
@@ -144,7 +174,6 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
         }
     }
 
-  /*
 
     private void upload_to_drive() {
 
@@ -157,17 +186,31 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
                 new Query.Builder().addFilter(Filters.and(Filters.eq(SearchableField.TITLE, FOLDER_NAME), Filters.eq(SearchableField.TRASHED, false)))
                         .build();
         Drive.DriveApi.query(mGoogleApiClient, query).setResultCallback(new ResultCallback<DriveApi.MetadataBufferResult>() {
-            @Override public void onResult(DriveApi.MetadataBufferResult result) {
+            @Override
+            public void onResult(DriveApi.MetadataBufferResult result) {
                 if (!result.getStatus().isSuccess()) {
                     Log.e(TAG, "Cannot create folder in the root.");
                 } else {
+
                     boolean isFound = false;
                     for (Metadata m : result.getMetadataBuffer()) {
                         if (m.getTitle().equals(FOLDER_NAME)) {
                             Log.e(TAG, "Folder exists");
                             isFound = true;
                             DriveId driveId = m.getDriveId();
-                            create_file_in_folder(driveId);
+
+                            if (pericia.getaNamePictures().size()==0) {
+                                for (int i = 0; i < pericia.getaNamePictures().size(); i++) {
+                                    Log.d("TAG2", "raiz " + RAIZ);
+                                    Log.d("TAG2", "nofor" + RAIZ + pericia.getaNamePictures().get(i));
+                                    create_file_in_folder(driveId, RAIZ + pericia.getaNamePictures().get(i), "image/jpeg");
+                                }
+                            }
+                            else{
+                                Log.d("TAG2","there is no foto");
+                            }
+
+                            create_file_in_folder(driveId, RAIZ + "mypdf.pdf", "text/pdf");
                             break;
                         }
                     }
@@ -177,13 +220,27 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
                         Drive.DriveApi.getRootFolder(mGoogleApiClient)
                                 .createFolder(mGoogleApiClient, changeSet)
                                 .setResultCallback(new ResultCallback<DriveFolder.DriveFolderResult>() {
-                                    @Override public void onResult(DriveFolder.DriveFolderResult result) {
+                                    @Override
+                                    public void onResult(DriveFolder.DriveFolderResult result) {
                                         if (!result.getStatus().isSuccess()) {
-                                            Log.e(TAG, "U AR A MORON! Error while trying to create the folder");
+                                            Log.e(TAG, "Não foi possível criar o diretório");
                                         } else {
                                             Log.i(TAG, "Created a folder");
                                             DriveId driveId = result.getDriveFolder().getDriveId();
-                                            create_file_in_folder(driveId);
+                                            if (pericia.getaNamePictures().size()==0) {
+                                                for (int i = 0; i < pericia.getaNamePictures().size(); i++) {
+                                                    Log.d("TAG2", "raiz " + RAIZ);
+                                                    Log.d("TAG2", "nofor" + RAIZ + pericia.getaNamePictures().get(i));
+                                                    create_file_in_folder(driveId, RAIZ + pericia.getaNamePictures().get(i), "image/jpeg");
+                                                }
+                                            }
+                                            else{
+                                                Log.d("TAG2","there is no foto");
+                                            }
+
+                                            create_file_in_folder(driveId, RAIZ + "mypdf.pdf", "text/pdf");
+
+
                                         }
                                     }
                                 });
@@ -192,12 +249,13 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
             }
         });
     }
-    */
-/*
-    private void create_file_in_folder(final DriveId driveId) {
+
+
+    private void create_file_in_folder(final DriveId driveId, final String name, final String type) {
 
         Drive.DriveApi.newDriveContents(mGoogleApiClient).setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
-            @Override public void onResult(@NonNull DriveApi.DriveContentsResult driveContentsResult) {
+            @Override
+            public void onResult(@NonNull DriveApi.DriveContentsResult driveContentsResult) {
                 if (!driveContentsResult.getStatus().isSuccess()) {
                     Log.e(TAG, "U AR A MORON! Error while trying to create new file contents");
                     return;
@@ -207,7 +265,9 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
                 OutputStream outputStream = driveContentsResult.getDriveContents().getOutputStream();
 
                 //------ THIS IS AN EXAMPLE FOR PICTURE ------
-                //ByteArrayOutputStream bitmapStream = new ByteArrayOutputStream();
+                // ByteArrayOutputStream bitmapStream = new ByteArrayOutputStream();
+                //Image  image;
+
                 //image.compress(Bitmap.CompressFormat.PNG, 100, bitmapStream);
                 //try {
                 //  outputStream.write(bitmapStream.toByteArray());
@@ -220,15 +280,19 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
                 //    .setMimeType("image/jpeg").setTitle("Android Photo.png").build();
 
                 //------ THIS IS AN EXAMPLE FOR FILE --------
-        //Drive  drive1;
-               // com.google.api.services.drive.Drive drive2;
-               // com.google.api.services.drive.Drive drive3;
+                //Drive  drive;
+                // com.google.api.services.drive.Drive drive2;
+                // com.google.api.services.drive.Drive drive3;
 
                 //File file = drive.files().create(fileMetadata, mediaContent)
-                  //      .setFields("id")
-                //        .execute();
+                //        .setFields("id")
+                //          .execute();
                 Toast.makeText(act, "Uploading to drive. If you didn't fucked up something like usual you should see it there", Toast.LENGTH_LONG).show();
-                final File theFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/xtests/tehfile.html"); //>>>>>> WHAT FILE ?
+
+
+                theFile = new File(name); //>>>>>> WHAT FILE ?
+                Log.d("TAG2", "in_create_file" + name);
+
                 try {
                     FileInputStream fileInputStream = new FileInputStream(theFile);
                     byte[] buffer = new byte[1024];
@@ -237,16 +301,17 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
                         outputStream.write(buffer, 0, bytesRead);
                     }
                 } catch (IOException e1) {
-                    Log.i(TAG, "U AR A MORON! Unable to write file contents.");
+                    Log.i(TAG, "Unable to write file contents");
                 }
                 //Writer writer = new OutputStreamWriter(outputStream);
-               // writer.write("Cojoasd");
-               // outputStream.write("<html><head><title></title><body>CONVERT MODA FOCA</body></html>",0,);
-                MetadataChangeSet changeSet = new MetadataChangeSet.Builder().setTitle(theFile.getName()).setMimeType("text/html").setStarred(false).build();
+                // writer.write("Cojoasd");
+                // outputStream.write("<html><head><title></title><body>CONVERT MODA FOCA</body></html>",0,);
+                MetadataChangeSet changeSet = new MetadataChangeSet.Builder().setTitle(theFile.getName()).setMimeType(type).setStarred(false).build();
                 DriveFolder folder = driveId.asDriveFolder();
                 folder.createFile(mGoogleApiClient, changeSet, driveContentsResult.getDriveContents())
                         .setResultCallback(new ResultCallback<DriveFolder.DriveFileResult>() {
-                            @Override public void onResult(@NonNull DriveFolder.DriveFileResult driveFileResult) {
+                            @Override
+                            public void onResult(@NonNull DriveFolder.DriveFileResult driveFileResult) {
                                 if (!driveFileResult.getStatus().isSuccess()) {
                                     Log.e(TAG, "U AR A MORON!  Error while trying to create the file");
                                     return;
@@ -254,8 +319,10 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
                                 Log.v(TAG, "Created a file: " + driveFileResult.getDriveFile().getDriveId());
                             }
                         });
+
             }
         });
+
     }
 
     @Override
@@ -298,15 +365,18 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
         }
     }
 
-    @Override public void onConnected(@Nullable Bundle bundle) {
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
         Log.v(TAG, "+++++++++++++++++++ onConnected +++++++++++++++++++");
     }
 
-    @Override public void onConnectionSuspended(int i) {
+    @Override
+    public void onConnectionSuspended(int i) {
         Log.e(TAG, "onConnectionSuspended [" + String.valueOf(i) + "]");
     }
 
-    @Override public void onConnectionFailed(@NonNull ConnectionResult result) {
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult result) {
         Log.i(TAG, "GoogleApiClient connection failed: " + result.toString());
         if (!result.hasResolution()) {
             // show the localized error dialog.
@@ -335,6 +405,6 @@ public class LaudoActivity extends android.support.v4.app.Fragment {
         }
         super.onPause();
     }
-    */
+
 }
 

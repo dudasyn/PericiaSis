@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-57:12
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-58:12
 MERGED from [com.android.support:multidex:1.0.2] C:\Users\user\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\49bd05e10fc9f679e610baaaf9837114\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:design:26.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\61e5e9d9e4b644eaf65f87bbaf8244f8\AndroidManifest.xml:17:1-31:12
 MERGED from [pub.devrel:easypermissions:0.3.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\easypermissions-0.3.0.aar\324994baa7617d960df34d6c0d486d25\AndroidManifest.xml:2:1-19:12
@@ -24,20 +24,20 @@ MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\user\.gra
 MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\dddc8ce1b55a9c151dd398cc674dfdb0\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\bc2a1f637ae67d790fa40afa8ef320a0\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\2df8142c6a1527738576433536f5dac2\AndroidManifest.xml:17:1-30:12
-INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-58:12
 	package
 		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:3:5-44
 		INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-57:12
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-58:12
 		INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-57:12
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:1-58:12
 		INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:2:11-69
@@ -65,20 +65,26 @@ uses-permission#android.permission.GET_ACCOUNTS
 ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:10:5-70
 	android:name
 		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:10:22-68
+uses-feature#android.hardware.camera
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:11:5-98
+	android:required
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:11:58-82
+	android:name
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:11:19-57
 meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:12:5-14:100
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:13:5-15:100
 	android:value
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:14:9-97
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:15:9-97
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:13:9-54
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:14:9-54
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:15:5-17:65
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:16:5-18:65
 	android:value
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:17:9-62
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:18:9-62
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:16:9-54
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:17:9-54
 application
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:19:5-55:19
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:20:5-56:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\61e5e9d9e4b644eaf65f87bbaf8244f8\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\61e5e9d9e4b644eaf65f87bbaf8244f8\AndroidManifest.xml:25:5-29:19
 MERGED from [pub.devrel:easypermissions:0.3.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\easypermissions-0.3.0.aar\324994baa7617d960df34d6c0d486d25\AndroidManifest.xml:11:5-17:19
@@ -118,99 +124,99 @@ MERGED from [com.android.support:support-compat:26.1.0] C:\Users\user\.gradle\ca
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\2df8142c6a1527738576433536f5dac2\AndroidManifest.xml:24:5-28:19
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\2df8142c6a1527738576433536f5dac2\AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:26:9-35
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:27:9-35
 	android:label
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:24:9-41
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:25:9-41
 	android:roundIcon
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:25:9-54
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:26:9-54
 	android:configChanges
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:21:9-70
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:22:9-70
 	android:icon
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:23:9-43
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:24:9-43
 	android:allowBackup
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:22:9-35
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:23:9-35
 	android:theme
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:27:9-40
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:28:9-40
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:20:9-68
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:21:9-68
 activity#coffeespace.com.br.periciasis.Activitys.MainActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:28:9-39:20
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:29:9-40:20
 	android:label
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:30:13-45
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:31:13-45
 	android:windowSoftInputMode
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:32:13-52
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:33:13-52
 	android:configChanges
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:33:13-74
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:34:13-74
 	android:theme
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:31:13-56
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:32:13-56
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:29:13-51
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:30:13-51
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:34:13-38:29
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:35:13-39:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:35:17-69
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:36:17-69
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:35:25-66
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:36:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:37:17-77
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:38:17-77
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:37:27-74
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:38:27-74
 activity#coffeespace.com.br.periciasis.Activitys.VeiculosActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:40:9-64
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:41:9-64
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:40:19-61
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:41:19-61
 activity#coffeespace.com.br.periciasis.Activitys.IpafActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:41:9-60
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:42:9-60
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:41:19-57
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:42:19-57
 activity#coffeespace.com.br.periciasis.Activitys.LocalActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:42:9-61
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:43:9-61
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:42:19-58
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:43:19-58
 activity#coffeespace.com.br.periciasis.Activitys.ConcDinActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:43:9-63
-	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:43:19-60
-activity#coffeespace.com.br.periciasis.Activitys.CapturaActivity
 ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:44:9-63
 	android:name
 		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:44:19-60
+activity#coffeespace.com.br.periciasis.Activitys.CapturaActivity
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:45:9-63
+	android:name
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:45:19-60
 activity#coffeespace.com.br.periciasis.Activitys.PreferencesActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:45:9-67
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:46:9-67
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:45:19-64
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:46:19-64
 activity#coffeespace.com.br.periciasis.Activitys.Settings
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:46:9-56
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:47:9-56
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:46:19-53
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:47:19-53
 activity#coffeespace.com.br.periciasis.Google.CreateEmptyFileActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:47:9-68
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:48:9-68
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:47:19-65
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:48:19-65
 activity#coffeespace.com.br.periciasis.Google.CreateFileInAppFolderActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:48:9-74
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:49:9-74
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:48:19-71
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:49:19-71
 activity#coffeespace.com.br.periciasis.Google.TestGoogleActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:49:9-63
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:50:9-63
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:49:19-60
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:50:19-60
 activity#coffeespace.com.br.periciasis.Activitys.DanoActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:50:9-60
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:51:9-60
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:50:19-57
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:51:19-57
 activity#coffeespace.com.br.periciasis.Google.CreateFileInFolderActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:51:9-71
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:52:9-71
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:51:19-68
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:52:19-68
 activity#coffeespace.com.br.periciasis.Google.CreateFile
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:52:9-55
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:53:9-55
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:52:19-52
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:53:19-52
 activity#coffeespace.com.br.periciasis.Google.PickFileWithOpenerActivity
-ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:53:9-71
+ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:54:9-71
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:53:19-68
+		ADDED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml:54:19-68
 uses-sdk
 INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\AndroidManifest.xml
