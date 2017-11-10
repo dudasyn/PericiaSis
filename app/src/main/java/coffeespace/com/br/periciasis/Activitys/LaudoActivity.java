@@ -41,6 +41,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 import coffeespace.com.br.periciasis.Google.CreateFile;
 import coffeespace.com.br.periciasis.R;
@@ -64,6 +66,7 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
     protected static final int REQUEST_CODE_RESOLUTION = 1337;
     private String FOLDER_NAME = "Laudos";
     private String RAIZ = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
+    private String nome_laudo, content_laudo;
 
     WebView weblaudo;
     static Laudo ld;
@@ -87,6 +90,22 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
         button_create_file = (Button) view.findViewById(R.id.button_create_file);
         button_upload_to_google_drive = (Button) view.findViewById(R.id.button_upload_to_google_drive);
 
+        if (ocorrencia != null) {
+            ld = new Laudo();
+            ld.setPerito(pericia.getPeritodesignado());
+            ld.setCorpodolaudo(pericia.imprimeCorpoLaudo());
+
+            nome_laudo = "RO 0" + firstTwo(ocorrencia.getDp()) + "-" + ocorrencia.getRo() + "-" + ocorrencia.getAno() + " CI " + ocorrencia.getCi() + "-10" + firstTwo(ocorrencia.getDp()) + "-" + ocorrencia.getAno() +
+                    " Laudo " + ocorrencia.getLaudo() + "-" + ocorrencia.getAno() + " (" + ocorrencia.getDia() + "-" + ocorrencia.getMes() + "-" + ocorrencia.getAno() + ")";
+
+            content_laudo = ld.imprimeLaudo();
+
+            weblaudo = (WebView) view.findViewById(R.id.vizualizacaodelaudo);
+            weblaudo.loadDataWithBaseURL(null, ld.imprimeLaudo(), "text/html", "utf-8", null);
+
+        }
+
+/*
 
         button_create_file.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +114,7 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
                 writeToFile("tehfile", "<html><head><title> fuck google...</title></head><body>Just a simple text</body></html>");
             }
         });
-
+*/
         button_upload_to_google_drive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,15 +130,7 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
         //// MY CODE
         btfinalizarlaudo.setOnClickListener(new btFinalizarClicked());
 
-        if (ocorrencia != null) {
-            ld = new Laudo();
-            ld.setPerito(pericia.getPeritodesignado());
-            ld.setCorpodolaudo(pericia.imprimeCorpoLaudo());
 
-            weblaudo = (WebView) view.findViewById(R.id.vizualizacaodelaudo);
-            weblaudo.loadDataWithBaseURL(null, ld.imprimeLaudo(), "text/html", "utf-8", null);
-
-        }
         return view;
     }
 
@@ -128,22 +139,28 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
         @Override
         public void onClick(View view) {
 
-
             Log.d("TAG", "CRIANDO LAUDO");
 
             String filename = "RO 0" + firstTwo(ocorrencia.getDp()) + "-" + ocorrencia.getRo() + "-" + ocorrencia.getAno() + " CI " + ocorrencia.getCi() + "-10" + firstTwo(ocorrencia.getDp()) + "-" + ocorrencia.getAno() +
                     " Laudo " + ocorrencia.getLaudo() + "-" + ocorrencia.getAno() + " (" + ocorrencia.getDia() + "-" + ocorrencia.getMes() + "-" + ocorrencia.getAno() + ")";
-            Toast.makeText(act, "Enviado pro Google Drive " + filename, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(act, "Enviado pro Google Drive " + filename, Toast.LENGTH_SHORT).show();
 
             String laudo = ld.imprimeLaudo();
 
+            if (mGoogleApiClient != null) {
+                upload_to_drive();
+            } else {
+                Log.e(TAG, "Could not fucking connect to google drive manager");
+            }
 
+/*
             Intent intent = new Intent(getContext(), CreateFile.class);
 
 
             intent.putExtra("laudofinal", laudo);
             intent.putExtra("nomedoarquivo", filename);
             startActivity(intent);
+*/
 
             ExamesActivity.listObjetos.clear();
             ExamesActivity.adapterlistobjetos.notifyDataSetChanged();
@@ -199,18 +216,21 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
                             isFound = true;
                             DriveId driveId = m.getDriveId();
 
-                            if (pericia.getaNamePictures().size()==0) {
+                            if (pericia.getaNamePictures().size() == 0) {
+                                Log.d("TAG2","there is no foto");
+                            } else {
                                 for (int i = 0; i < pericia.getaNamePictures().size(); i++) {
                                     Log.d("TAG2", "raiz " + RAIZ);
                                     Log.d("TAG2", "nofor" + RAIZ + pericia.getaNamePictures().get(i));
-                                    create_file_in_folder(driveId, RAIZ + pericia.getaNamePictures().get(i), "image/jpeg");
+                                    create_image(driveId, RAIZ + pericia.getaNamePictures().get(i));
                                 }
                             }
-                            else{
-                                Log.d("TAG2","there is no foto");
-                            }
+                            create_laudo(driveId, nome_laudo, content_laudo);
 
-                            create_file_in_folder(driveId, RAIZ + "mypdf.pdf", "text/pdf");
+                            // Enviou laudo e imagens
+                            ExamesActivity.listObjetos.clear();
+                            ExamesActivity.adapterlistobjetos.notifyDataSetChanged();
+
                             break;
                         }
                     }
@@ -227,31 +247,32 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
                                         } else {
                                             Log.i(TAG, "Created a folder");
                                             DriveId driveId = result.getDriveFolder().getDriveId();
-                                            if (pericia.getaNamePictures().size()==0) {
+                                            if (pericia.getaNamePictures().size() == 0) {
+                                                Log.d("TAG2","there is no foto");
+                                            } else {
                                                 for (int i = 0; i < pericia.getaNamePictures().size(); i++) {
                                                     Log.d("TAG2", "raiz " + RAIZ);
                                                     Log.d("TAG2", "nofor" + RAIZ + pericia.getaNamePictures().get(i));
-                                                    create_file_in_folder(driveId, RAIZ + pericia.getaNamePictures().get(i), "image/jpeg");
+                                                    create_image(driveId, RAIZ + pericia.getaNamePictures().get(i));
                                                 }
                                             }
-                                            else{
-                                                Log.d("TAG2","there is no foto");
+
+                                            create_laudo(driveId, nome_laudo, content_laudo);
+                                            // Enviou laudo e imagens
+                                            ExamesActivity.listObjetos.clear();
+                                            ExamesActivity.adapterlistobjetos.notifyDataSetChanged();
+
                                             }
-
-                                            create_file_in_folder(driveId, RAIZ + "mypdf.pdf", "text/pdf");
-
-
                                         }
-                                    }
-                                });
+                                    });
+                                }
                     }
                 }
-            }
-        });
-    }
+            });
+        }
 
 
-    private void create_file_in_folder(final DriveId driveId, final String name, final String type) {
+    private void create_image(final DriveId driveId, final String name) {
 
         Drive.DriveApi.newDriveContents(mGoogleApiClient).setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
             @Override
@@ -287,7 +308,7 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
                 //File file = drive.files().create(fileMetadata, mediaContent)
                 //        .setFields("id")
                 //          .execute();
-                Toast.makeText(act, "Uploading to drive. If you didn't fucked up something like usual you should see it there", Toast.LENGTH_LONG).show();
+                //Toast.makeText(act, "Uploading to drive. If you didn't fucked up something like usual you should see it there", Toast.LENGTH_LONG).show();
 
 
                 theFile = new File(name); //>>>>>> WHAT FILE ?
@@ -306,7 +327,7 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
                 //Writer writer = new OutputStreamWriter(outputStream);
                 // writer.write("Cojoasd");
                 // outputStream.write("<html><head><title></title><body>CONVERT MODA FOCA</body></html>",0,);
-                MetadataChangeSet changeSet = new MetadataChangeSet.Builder().setTitle(theFile.getName()).setMimeType(type).setStarred(false).build();
+                MetadataChangeSet changeSet = new MetadataChangeSet.Builder().setTitle(theFile.getName()).setMimeType("image/jpeg").setStarred(false).build();
                 DriveFolder folder = driveId.asDriveFolder();
                 folder.createFile(mGoogleApiClient, changeSet, driveContentsResult.getDriveContents())
                         .setResultCallback(new ResultCallback<DriveFolder.DriveFileResult>() {
@@ -316,6 +337,67 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
                                     Log.e(TAG, "U AR A MORON!  Error while trying to create the file");
                                     return;
                                 }
+                                Toast.makeText(act, "Imagens enviadas pro Gdrive: " + driveFileResult.getDriveFile().getDriveId() , Toast.LENGTH_SHORT).show();
+                                Log.v(TAG, "Created a file: " + driveFileResult.getDriveFile().getDriveId());
+                            }
+                        });
+
+            }
+        });
+
+    }
+
+    private void create_laudo(final DriveId driveId, final String name, final String content) {
+
+
+        Drive.DriveApi.newDriveContents(mGoogleApiClient).setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
+            @Override
+            public void onResult(@NonNull DriveApi.DriveContentsResult driveContentsResult) {
+                if (!driveContentsResult.getStatus().isSuccess()) {
+                    Log.e(TAG, "U AR A MORON! Error while trying to create new file contents");
+                    return;
+                }
+
+                OutputStream outputStream = driveContentsResult.getDriveContents().getOutputStream();
+                theFile = new File(name); //>>>>>> WHAT FILE ?
+                Log.d("TAG2", "in_create_file" + name);
+
+                try {
+                    FileInputStream fileInputStream = new FileInputStream(theFile);
+                    byte[] buffer = new byte[1024];
+                    int bytesRead;
+                    while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }
+                } catch (IOException e1) {
+                    Log.i(TAG, "Unable to write file contents");
+                }
+
+                Writer writer = new OutputStreamWriter(outputStream);
+                try {
+                    writer.write(content);
+                } catch (IOException e) {
+                    Log.d("TAG2", "Nao conseguiu escrever o conteúdo");
+                    e.printStackTrace();
+                }
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                // outputStream.write("<html><head><title></title><body>CONVERT MODA FOCA</body></html>",0,);
+                MetadataChangeSet changeSet = new MetadataChangeSet.Builder().setTitle(name).setMimeType("text/html").setStarred(false).build();
+                DriveFolder folder = driveId.asDriveFolder();
+                folder.createFile(mGoogleApiClient, changeSet, driveContentsResult.getDriveContents())
+                        .setResultCallback(new ResultCallback<DriveFolder.DriveFileResult>() {
+                            @Override
+                            public void onResult(@NonNull DriveFolder.DriveFileResult driveFileResult) {
+                                if (!driveFileResult.getStatus().isSuccess()) {
+                                    Log.e(TAG, " Error while trying to create the file");
+                                    return;
+                                }
+                                Toast.makeText(act, "Laudo enviado pro Gdrive: " + driveFileResult.getDriveFile().getDriveId() , Toast.LENGTH_SHORT).show();
+
                                 Log.v(TAG, "Created a file: " + driveFileResult.getDriveFile().getDriveId());
                             }
                         });

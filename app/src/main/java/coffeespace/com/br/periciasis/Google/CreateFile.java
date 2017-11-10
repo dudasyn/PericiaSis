@@ -159,6 +159,7 @@ public class CreateFile extends BaseDemoActivity {
                     Writer writer = new OutputStreamWriter(outputStream);
 
 
+
                     Bundle extras = getIntent().getExtras();
                     if (extras != null) {
                         final String laudo = extras.getString("laudofinal");
