@@ -6,29 +6,12 @@
     android:layout_height="match_parent"
     tools:context="coffeespace.com.br.periciasis.Activitys.ObjetosActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/labelveiculos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
         android:layout_marginTop="8dp"
+        android:gravity="top"
         android:orientation="vertical">
 
 
@@ -36,248 +19,96 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/lbplaca"
+                android:id="@+id/labelobjetos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/lbnomeobjeto"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0dp"
-                android:text="Placa"
+                android:text="Nome"
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/editplaca"
+                android:id="@+id/editnomeobjeto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
                 android:ems="10"
-                android:hint="placa"
+                android:hint="(definição do objeto)"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="top"
             android:orientation="horizontal"
             android:weightSum="1">
 
-
             <TextView
-                android:id="@+id/lbmodelo"
+                android:id="@+id/lbdescricao"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start"
                 android:layout_marginBottom="20dp"
-                android:text="Modelo"
+                android:text="Descrição"
                 android:textSize="24sp" />
 
+
             <EditText
-                android:id="@+id/editmodelo"
+                android:id="@+id/editdescricaoobjeto"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="0dp"
+                android:layout_height="200dp"
+                android:elevation="1dp"
                 android:ems="10"
-                android:hint="modelo"
-                android:inputType="textPersonName" />
+                android:gravity="top"
+                android:hint="(descreva pormenorizadamente o objeto analisado)"
+            android:inputType="text|textMultiLine" />
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal"
             android:weightSum="1">
 
-
-            <TextView
-                android:id="@+id/lbmarca"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                android:text="Marca"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/editmarca"
+            <Button
+                android:id="@+id/btinserirobjetos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:ems="10"
-                android:hint="marca"
-                android:inputType="textPersonName" />
-        </LinearLayout>
+                android:text="Inserir Objeto" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/lbcor"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                android:text="Cor"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/editcor"
+            <Button
+                android:id="@+id/btfotografarobjeto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:ems="10"
-                android:hint="Cor"
-                android:inputType="textPersonName" />
+                android:text="Fotografar" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/lbmunicipio"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                android:text="Município"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/editmunicipio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:ems="10"
-                android:hint="Município"
-                android:inputType="textPersonName" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/lbestado"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                android:text="Estado"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/editestado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:ems="10"
-                android:hint="Estado"
-                android:inputType="textPersonName" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/lbtipoveiculo"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                android:text="Tipo"
-                android:textSize="24sp" />
-
-            <Spinner
-                android:id="@+id/spinnertipoveiculos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </Spinner>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/lbnordem"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="0dp"
-                    android:text="Nº ordem"
-                    android:textSize="24sp" />
-
-                <EditText
-                    android:id="@+id/editnordem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:visibility="invisible" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/lbnomeempresaonibus"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="0dp"
-                    android:text="Empresa"
-                    android:textSize="24sp" />
-
-                <EditText
-                    android:id="@+id/editempresa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:visibility="invisible" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <Button
-                    android:id="@+id/btinserirveiculos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Inserir Veículo" />
-
-                <Button
-                    android:id="@+id/btveiculosvoltar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Voltar" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

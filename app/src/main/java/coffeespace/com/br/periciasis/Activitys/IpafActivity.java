@@ -36,8 +36,9 @@ public class IpafActivity extends AppCompatActivity {
 
         labelipaf = (TextView) findViewById(R.id.labelipaf);
 
-
+//            Log.d("TAG2","sizeapaf " + pericia.getaObjetos().get(ExamesActivity.poslistview).getDescricao());
          npafs = (pericia.getaObjetos().get(ExamesActivity.poslistview).getaIpafs().size());
+
         labelipaf.setText("Inserir " + (npafs + 1) + "º Ipaf no objeto: ");
 
         btinseriripaf = (Button) findViewById(R.id.btinseriripaf);

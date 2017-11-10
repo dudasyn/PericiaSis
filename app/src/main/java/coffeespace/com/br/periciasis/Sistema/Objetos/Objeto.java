@@ -15,6 +15,25 @@ public class Objeto {
     private ArrayList<Dano> aDanos = new ArrayList<Dano>();
     private int pos;
     private String avarias;
+    private String nome,descricao;
+
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
 
     public String getAvarias() {
         return avarias;

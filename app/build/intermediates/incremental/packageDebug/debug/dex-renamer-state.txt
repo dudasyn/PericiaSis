@@ -1,19 +1,7 @@
-#Fri Nov 10 10:04:48 BRST 2017
-renamed.5=classes6.dex
-renamed.4=classes5.dex
-renamed.3=classes4.dex
-renamed.2=classes3.dex
+#Fri Nov 10 18:16:51 BRST 2017
+base.0=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\95
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.5=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\51
-base.4=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\54
-base.3=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\52
-base.2=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\55
-base.1=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\50
-base.0=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\53
-file.5=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\51\\classes.dex
-file.4=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\54\\classes.dex
-file.3=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\52\\classes.dex
-file.2=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\55\\classes.dex
-file.1=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\50\\classes.dex
-file.0=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\53\\classes.dex
+file.1=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\95\\classes2.dex
+base.1=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\95
+file.0=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\95\\classes.dex

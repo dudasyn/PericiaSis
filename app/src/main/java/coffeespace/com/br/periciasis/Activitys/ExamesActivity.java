@@ -41,7 +41,7 @@ public class ExamesActivity extends android.support.v4.app.Fragment {
     MainActivity act;
     Button btnovoobjeto;
     Spinner spinnerobjetos;
-    RadioButton rddano, rdipaf, rdmorte;
+    RadioButton rddano, rdipaf, rdviolacao,rdmorte;
     RadioGroup rdgroup;
     static ArrayList<String> listObjetos = new ArrayList<String>();
     static ArrayAdapter<String> adapterlistobjetos;
@@ -80,13 +80,14 @@ public class ExamesActivity extends android.support.v4.app.Fragment {
         lbmsgtopo.setText("CLIQUE PARA INSERIR VEÍCULOS,CADÁVER, etc...");
         rddano = (RadioButton) view.findViewById(R.id.rddano);
         rdipaf = (RadioButton) view.findViewById(R.id.rdipaf);
-        rdmorte = (RadioButton) view.findViewById(R.id.rdipaf);
+        rdmorte = (RadioButton) view.findViewById(R.id.rdmorte);
+        rdviolacao = (RadioButton)view.findViewById(R.id.rdviolacao);
         rdgroup = (RadioGroup) view.findViewById(R.id.rdgroup);
 
         spinnerobjetos = (Spinner) view.findViewById(R.id.spinnerobjetos);
         ListView listview = (ListView) view.findViewById(R.id.lvobjetos);
         btnovoobjeto = (Button) view.findViewById(R.id.btnovoobjeto);
-        tipoobjeto = new ArrayList<>(Arrays.asList("Veículo", "Outro objeto", "Cadáver"));
+        tipoobjeto = new ArrayList<>(Arrays.asList("Veículo","Cadáver", "Objeto qualquer"));
         ArrayAdapter<String> adapterobjetos;
         adapterobjetos = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, tipoobjeto);
         spinnerobjetos.setAdapter(adapterobjetos);
@@ -110,38 +111,37 @@ public class ExamesActivity extends android.support.v4.app.Fragment {
 
 
 
-            if (rdmorte.isChecked() == true) {
+            if (rdmorte.isChecked()) {
                 Log.d("TAG", "morte impl");
                 Toast.makeText(act, "Implementar", Toast.LENGTH_SHORT).show();
             }
 
-            if (rddano.isChecked() == true) {
+            if (rddano.isChecked()) {
 
                 if (pericia.getaObjetos().get(i) instanceof Cadaver) {
-                    Toast.makeText(act, "Não é possível constatar dano em cadáver bobinho", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(act, "Não é possível constatar dano em cadáver", Toast.LENGTH_SHORT).show();
 
                 } else {
                     startActivity(new Intent(act, DanoActivity.class));
                 }
             }
-            if (rdipaf.isChecked() == true) {
+            if (rdipaf.isChecked()) {
 
-                Log.d("TAG", "i - " + i);
                 poslistview=i;
-                Log.d("TAG", "getPOs - " + pericia.getaObjetos().get(i).getPos());
-/*
-            if(pericia.getaObjetos().get(i) instanceof Cadaver){
-                Log.d("TAG","EH CADAVER");
-
-            }else{
-                Log.d("TAG","NAO EH CADAVER");
-            }
-            */
+                Log.d("TAG2","poslistview " + poslistview);
                 startActivity(new Intent(act, IpafActivity.class));
             }
-            if (rdmorte.isChecked() == true) {
+            if (rdmorte.isChecked()) {
                 Log.d("TAG", "morte impl");
                 Toast.makeText(act, "Implementar", Toast.LENGTH_SHORT).show();
+            }
+
+            if (rdviolacao.isChecked()) {
+                poslistview=i;
+                Log.d("TAG", "morte impl");
+                Toast.makeText(act, "Implementar", Toast.LENGTH_SHORT).show();
+
+                // Toast.makeText(act, "Implementar", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -161,9 +161,7 @@ public class ExamesActivity extends android.support.v4.app.Fragment {
                 case "Veículo":
                     startActivity(new Intent(getActivity(), VeiculosActivity.class));
                     break;
-                case "Acesso":
-                    Toast.makeText(act, "Acesso", Toast.LENGTH_SHORT).show();
-                    break;
+
                 case "Cadáver":
                     cadaver = new Cadaver();
                     pericia.getaCadaveres().add(cadaver);
@@ -172,10 +170,9 @@ public class ExamesActivity extends android.support.v4.app.Fragment {
                     listObjetos.add("Cadáver (" + pericia.getaCadaveres().size() + ")");
                     ExamesActivity.adapterlistobjetos.notifyDataSetChanged();
                     break;
-                default:
-                    Toast.makeText(act, "Nada a inserir", Toast.LENGTH_SHORT).show();
+                case "Objeto qualquer":
+                    startActivity(new Intent(getActivity(), ObjetosActivity.class));
                     break;
-
             }
         }
     }

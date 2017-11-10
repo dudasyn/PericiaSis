@@ -28,13 +28,13 @@ import static coffeespace.com.br.periciasis.Activitys.MainActivity.pericia;
 
 public class CapturaActivity extends AppCompatActivity {
 
-    private static final int CAM_REQUEST = 1888;
+    //private static final int CAM_REQUEST = 1888;
     String RAIZ = Environment.getExternalStorageDirectory().getAbsolutePath();
     private ImageView imageView;
     Button btcapturar, btpegardosd;
     ImageView imagem;
     int n=1;
-    //private static final int CAM_REQUEST = 1313;
+    private static final int CAM_REQUEST = 1313;
     static String nome;
 
     @Override

@@ -8,6 +8,7 @@ import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
@@ -143,28 +144,14 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
 
             String filename = "RO 0" + firstTwo(ocorrencia.getDp()) + "-" + ocorrencia.getRo() + "-" + ocorrencia.getAno() + " CI " + ocorrencia.getCi() + "-10" + firstTwo(ocorrencia.getDp()) + "-" + ocorrencia.getAno() +
                     " Laudo " + ocorrencia.getLaudo() + "-" + ocorrencia.getAno() + " (" + ocorrencia.getDia() + "-" + ocorrencia.getMes() + "-" + ocorrencia.getAno() + ")";
-            // Toast.makeText(act, "Enviado pro Google Drive " + filename, Toast.LENGTH_SHORT).show();
+             Toast.makeText(act, "Enviado pro Google Drive " + filename, Toast.LENGTH_SHORT).show();
 
             String laudo = ld.imprimeLaudo();
 
-            if (mGoogleApiClient != null) {
-                upload_to_drive();
-            } else {
-                Log.e(TAG, "Could not fucking connect to google drive manager");
-            }
-
-/*
             Intent intent = new Intent(getContext(), CreateFile.class);
-
-
             intent.putExtra("laudofinal", laudo);
             intent.putExtra("nomedoarquivo", filename);
             startActivity(intent);
-*/
-
-            ExamesActivity.listObjetos.clear();
-            ExamesActivity.adapterlistobjetos.notifyDataSetChanged();
-
 
         }
 
@@ -226,11 +213,21 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
                                 }
                             }
                             create_laudo(driveId, nome_laudo, content_laudo);
+                            Toast.makeText(act, "Fechando em 5 segundos ", Toast.LENGTH_SHORT).show();
+                            new CountDownTimer(5000, 1000) {
 
-                            // Enviou laudo e imagens
-                            ExamesActivity.listObjetos.clear();
-                            ExamesActivity.adapterlistobjetos.notifyDataSetChanged();
+                                public void onTick(long millisUntilFinished) {
+                                    Log.d("TAG2","seconds remaing" + millisUntilFinished / 1000);
+                                }
 
+                                public void onFinish() {
+                                    Log.d("TAG2","done!");
+                                    Intent i = getContext().getPackageManager()
+                                            .getLaunchIntentForPackage( getContext().getPackageName() );
+                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(i);
+                                }
+                            }.start();
                             break;
                         }
                     }
@@ -261,6 +258,23 @@ public class LaudoActivity extends android.support.v4.app.Fragment implements Go
                                             // Enviou laudo e imagens
                                             ExamesActivity.listObjetos.clear();
                                             ExamesActivity.adapterlistobjetos.notifyDataSetChanged();
+
+                                            Toast.makeText(act, "Fechando em 5 segundos ", Toast.LENGTH_SHORT).show();
+                                            new CountDownTimer(5000, 1000) {
+
+                                                public void onTick(long millisUntilFinished) {
+                                                    Log.d("TAG2","seconds remaing" + millisUntilFinished / 1000);
+                                                }
+
+                                                public void onFinish() {
+                                                    Log.d("TAG2","done!");
+                                                    Intent i = getContext().getPackageManager()
+                                                            .getLaunchIntentForPackage( getContext().getPackageName() );
+                                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    startActivity(i);
+                                                }
+                                            }.start();
+
 
                                             }
                                         }

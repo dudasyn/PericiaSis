@@ -38,87 +38,107 @@ public class PericiaIpaf extends Pericia {
     public String geraConstatacao() {
 
         String c = "";
-        int nveiculos = getaVeiculosExaminados().size();
 
-        c = "<ol>";
-        for (int i = 0; i < nveiculos; i++) {
-            String caracteristicas = "";
-            int npafs = getaVeiculosExaminados().get(i).getaIpafs().size();
-            if (nveiculos == 1) {
+       for (int k=0;k<getaObjetos().size();k++){
+           if (getaObjetos().get(k).getaIpafs().size()==0){
+               Log.d("TAG2","NAO TEM PAF");
+           }
+           else{
 
-                if (npafs == 1) {
-                    c = c + "<li>Das constatações no Veículo: foi constatado um impacto de projétil de arma de fogo com as seguintes características:</li><br>";
-                } else {
-                    if (npafs > 1) {
-                        c = c + "<li>Das constatações no Veículo: foram constatados impactos de projétis de arma de fogo com as seguintes características:</li><br>";
-                    } else {
-                        c = c + "<li>Das constatações no Veículo:: <b>(IPAF NÃO INSERIDO)</b>:</li><br>";
-                    }
-                }
+               if (getaObjetos().get(k) instanceof Veiculo){
+
+                   int nveiculos = getaVeiculosExaminados().size();
+
+                   c = "<ol>";
+                   for (int i = 0; i < nveiculos; i++) {
+                       String caracteristicas = "";
+                       int npafs = getaVeiculosExaminados().get(i).getaIpafs().size();
+                       if (nveiculos == 1) {
+
+                           if (npafs == 1) {
+                               c = c + "<li>Das constatações no Veículo: foi constatado um impacto de projétil de arma de fogo com as seguintes características:</li><br>";
+                           } else {
+                               if (npafs > 1) {
+                                   c = c + "<li>Das constatações no Veículo: foram constatados impactos de projétis de arma de fogo com as seguintes características:</li><br>";
+                               } else {
+                                   c = c + "<li>Das constatações no Veículo:: <b>(IPAF NÃO INSERIDO)</b>:</li><br>";
+                               }
+                           }
 
 
-            } else {
-                if (npafs == 1) {
-                    c = c + "<li>Das constatações em V" + (i + 1) + "(" + getaVeiculosExaminados().get(i).getPlaca() + "): foi constatado um impacto de projétil de arma de fogo com as seguintes características:</li><br>";
-                } else {
-                    if (npafs > 1) {
-                        c = c + "<li>Das constatações em V" + (i + 1) + "(" + getaVeiculosExaminados().get(i).getPlaca() + "): foram constatados impactos de projétis de arma de fogo com as seguintes características:</li><br>";
+                       } else {
+                           if (npafs == 1) {
+                               c = c + "<li>Das constatações em V" + (i + 1) + "(" + getaVeiculosExaminados().get(i).getPlaca() + "): foi constatado um impacto de projétil de arma de fogo com as seguintes características:</li><br>";
+                           } else {
+                               if (npafs > 1) {
+                                   c = c + "<li>Das constatações em V" + (i + 1) + "(" + getaVeiculosExaminados().get(i).getPlaca() + "): foram constatados impactos de projétis de arma de fogo com as seguintes características:</li><br>";
 
-                    } else {
-                        c = c + "<li>Das constatações em V" + (i + 1) + "(" + getaVeiculosExaminados().get(i).getPlaca() + "):<b> (IPAF NÃO INSERIDO)</b></li><br>";
-                    }
-                }
+                               } else {
+                                   c = c + "<li>Das constatações em V" + (i + 1) + "(" + getaVeiculosExaminados().get(i).getPlaca() + "):<b> (IPAF NÃO INSERIDO)</b></li><br>";
+                               }
+                           }
 
-            }
-            c = c + "<ol><li class=\"lialf\"><table border=1><b>Tabela com informação acerca dos IPAF's:</b>";
+                       }
+                       c = c + "<ol><li class=\"lialf\"><table border=1><b>Tabela com informação acerca dos IPAF's:</b>";
 
-            for (int j = 0; j < npafs; j++) {
+                       for (int j = 0; j < npafs; j++) {
 
-                String transfixou = "";
-                if (getaVeiculosExaminados().get(i).getaIpafs().get(j).getTransfixed()) {
-                    transfixou = "transfixante";
-                } else {
-                    transfixou = "não transfixante";
-                }
+                           String transfixou = "";
+                           if (getaVeiculosExaminados().get(i).getaIpafs().get(j).getTransfixed()) {
+                               transfixou = "transfixante";
+                           } else {
+                               transfixou = "não transfixante";
+                           }
 
-                formato = getaVeiculosExaminados().get(i).getaIpafs().get(j).formato;
-                distsolo = getaVeiculosExaminados().get(i).getaIpafs().get(j).distsolo;
-                angulacao = getaVeiculosExaminados().get(i).getaIpafs().get(j).angulacao;
-                eixomaior = getaVeiculosExaminados().get(i).getaIpafs().get(j).eixomaior;
-                eixomenor = getaVeiculosExaminados().get(i).getaIpafs().get(j).eixomenor;
-                if (empty(formato)) {
-                    formato = "[NÃO INSERIDO]";
-                }
-                if (empty(distsolo)) {
-                    distsolo = "[NÃO INSERIDO]";
-                }
-                if (empty(angulacao)) {
-                    angulacao = "[NÃO INSERIDO]";
-                }
-                if (empty(eixomaior)) {
-                    eixomaior = "[NÃO INSERIDO]";
-                }
-                if (empty(eixomenor)) {
-                    eixomenor = "[NÃO INSERIDO]";
-                }
-                caracteristicas = "impacto " + transfixou + " de " +
-                        formato + ", distando " + distsolo + "m do solo" +
-                        ", apresenta medidas para o eixo  maior de " + eixomaior + " mm, e  " + eixomenor + "mm para o eixo menor, apresentando angulacao de " + angulacao;
+                           formato = getaVeiculosExaminados().get(i).getaIpafs().get(j).formato;
+                           distsolo = getaVeiculosExaminados().get(i).getaIpafs().get(j).distsolo;
+                           angulacao = getaVeiculosExaminados().get(i).getaIpafs().get(j).angulacao;
+                           eixomaior = getaVeiculosExaminados().get(i).getaIpafs().get(j).eixomaior;
+                           eixomenor = getaVeiculosExaminados().get(i).getaIpafs().get(j).eixomenor;
+                           if (empty(formato)) {
+                               formato = "[NÃO INSERIDO]";
+                           }
+                           if (empty(distsolo)) {
+                               distsolo = "[NÃO INSERIDO]";
+                           }
+                           if (empty(angulacao)) {
+                               angulacao = "[NÃO INSERIDO]";
+                           }
+                           if (empty(eixomaior)) {
+                               eixomaior = "[NÃO INSERIDO]";
+                           }
+                           if (empty(eixomenor)) {
+                               eixomenor = "[NÃO INSERIDO]";
+                           }
+                           caracteristicas = "impacto " + transfixou + " de " +
+                                   formato + ", distando " + distsolo + "m do solo" +
+                                   ", apresenta medidas para o eixo  maior de " + eixomaior + " mm, e  " + eixomenor + "mm para o eixo menor, apresentando angulacao de " + angulacao;
 
-                c = c + "<tr><td rowspan=3><b>IPAF " + (j + 1) + "</b></td><td><b>LOCALIZAÇÃO</b></td><td><b>DIREÇÃO E SENTIDO</b></td><td><b>ORIGEM</b></td><td><b>TRAJETÓRIA</b></td></tr>" +
-                        "<td>" + getaVeiculosExaminados().get(i).getaIpafs().get(j).getLocalizacao() + "</td>" +
-                        "<td>" + getaVeiculosExaminados().get(i).getaIpafs().get(j).getOrientacao() + "</td>" +
-                        "<td>" + getaVeiculosExaminados().get(i).getaIpafs().get(j).getOrigem() + "</td>" +
-                        "<td>" + getaVeiculosExaminados().get(i).getaIpafs().get(j).getTrajetoria() + "</td>" +
-                        "</tr><tr><td colspan=4>Informações adicionais: " + caracteristicas + "</td></tr></tr>";
-            }
-            c = c + "</table></li></ol>";
-        }
-        for (String item : getaItemConstatacao()) {
-            c = c + "<li> " + item + ";</li>";
-        }
-        c = c + "</ol>";
-        return c;
+                           c = c + "<tr><td rowspan=3><b>IPAF " + (j + 1) + "</b></td><td><b>LOCALIZAÇÃO</b></td><td><b>DIREÇÃO E SENTIDO</b></td><td><b>ORIGEM</b></td><td><b>TRAJETÓRIA</b></td></tr>" +
+                                   "<td>" + getaVeiculosExaminados().get(i).getaIpafs().get(j).getLocalizacao() + "</td>" +
+                                   "<td>" + getaVeiculosExaminados().get(i).getaIpafs().get(j).getOrientacao() + "</td>" +
+                                   "<td>" + getaVeiculosExaminados().get(i).getaIpafs().get(j).getOrigem() + "</td>" +
+                                   "<td>" + getaVeiculosExaminados().get(i).getaIpafs().get(j).getTrajetoria() + "</td>" +
+                                   "</tr><tr><td colspan=4>Informações adicionais: " + caracteristicas + "</td></tr></tr>";
+                       }
+                       c = c + "</table></li></ol>";
+                   }
+                   for (String item : getaItemConstatacao()) {
+                       c = c + "<li> " + item + ";</li>";
+                   }
+                   c = c + "</ol>";
+
+               }else{
+                   if (getaObjetos().get(k) instanceof Objeto){
+                       c = c + "TEM PAF NESSE OBJETO MY BROW" + getaObjetos().get(k).getNome();
+                   }
+
+               }
+
+           }
+       }
+
+     return c;
     }
 
     public boolean outrosCamposVazios() {

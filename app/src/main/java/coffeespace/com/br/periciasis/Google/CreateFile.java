@@ -34,6 +34,7 @@ import com.google.android.gms.drive.Drive;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.IntentSender.SendIntentException;
+import android.os.CountDownTimer;
 import android.util.Log;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.drive.DriveApi.DriveContentsResult;
@@ -82,6 +83,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -134,7 +136,21 @@ public class CreateFile extends BaseDemoActivity {
                             OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID);
                     Log.d("ID",driveId.toString());
                     showMessage("File created with ID: " + driveId);
+                    Toast.makeText(this, "Fechando em 5 segundos...", Toast.LENGTH_SHORT).show();
+                    new CountDownTimer(5000, 1000) {
 
+                        public void onTick(long millisUntilFinished) {
+                            Log.d("TAG2","seconds remaing" + millisUntilFinished / 1000);
+                        }
+
+                        public void onFinish() {
+                            Log.d("TAG2","done!");
+                            Intent i = getBaseContext().getPackageManager()
+                                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
+                        }
+                    }.start();
                     Intent i = getBaseContext().getPackageManager()
                             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -10,7 +10,7 @@ public class PericiaIpafVeiculo extends PericiaIpaf {
 
     public String geraTitulo() {
 
-        return "<b>LAUDO DE EXAME EM VEICULO DE CONSTATAÇÃO DE IMPACTO DE PROJETIL DE ARMA DE FOGO</b>";
+        return "<b>LAUDO DE EXAME EM VEÍCULO DE CONSTATAÇÃO DE IMPACTO DE PROJETIL DE ARMA DE FOGO</b>";
 
     }
 

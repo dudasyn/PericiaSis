@@ -44,6 +44,7 @@
         <activity android:name=".Activitys.ConcDinActivity" />
         <activity android:name=".Activitys.CapturaActivity" />
         <activity android:name=".Activitys.PreferencesActivity" />
+        <activity android:name=".Activitys.ObjetosActivity" />
         <activity android:name=".Activitys.Settings" />
         <activity android:name=".Google.CreateEmptyFileActivity" />
         <activity android:name=".Google.CreateFileInAppFolderActivity" />

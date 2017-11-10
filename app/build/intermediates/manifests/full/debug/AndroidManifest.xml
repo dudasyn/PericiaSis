@@ -55,6 +55,7 @@
         <activity android:name="coffeespace.com.br.periciasis.Activitys.ConcDinActivity" />
         <activity android:name="coffeespace.com.br.periciasis.Activitys.CapturaActivity" />
         <activity android:name="coffeespace.com.br.periciasis.Activitys.PreferencesActivity" />
+        <activity android:name="coffeespace.com.br.periciasis.Activitys.ObjetosActivity" />
         <activity android:name="coffeespace.com.br.periciasis.Activitys.Settings" />
         <activity android:name="coffeespace.com.br.periciasis.Google.CreateEmptyFileActivity" />
         <activity android:name="coffeespace.com.br.periciasis.Google.CreateFileInAppFolderActivity" />
