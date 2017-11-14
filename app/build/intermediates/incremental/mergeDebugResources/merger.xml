@@ -2067,6 +2067,7 @@
 
     </string-array><string-array name="tipo_pericia">
         <item>Local</item>
+        <item>Modelo Morte</item>
         <item>Modelo Ipaf em Veículo na DP</item>
         <item>Modelo Arrombamento</item>
         <item>Modelo Acidente de Trânsito</item>
@@ -2081,7 +2082,7 @@
         <item>Five</item>
         <item>Six</item>
 
-    </string-array></file><file path="C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    </string-array><string name="tipo_morte">Modelo Morte</string></file><file path="C:\Users\user\AndroidStudioProjects\PericiaSis\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

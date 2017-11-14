@@ -36,6 +36,7 @@ import coffeespace.com.br.periciasis.Sistema.PericiaArrombamento;
 import coffeespace.com.br.periciasis.Sistema.PericiaDano;
 import coffeespace.com.br.periciasis.Sistema.PericiaIpaf;
 import coffeespace.com.br.periciasis.Sistema.PericiaIpafVeiculo;
+import coffeespace.com.br.periciasis.Sistema.PericiaMorte;
 import coffeespace.com.br.periciasis.Sistema.PericiaSuicidio;
 import coffeespace.com.br.periciasis.Sistema.PericiaTransito;
 import coffeespace.com.br.periciasis.Sistema.Perito;
@@ -289,6 +290,13 @@ public class OcorrenciaActivity extends android.support.v4.app.Fragment {
         if (tipopericia == getString(R.string.tipo_suicidio)) {
             Toast.makeText(act, "Laudo de Suicídio", Toast.LENGTH_SHORT).show();
             pericia = new PericiaSuicidio();
+            pericia.setOcorrencia(ocorrencia);
+            pericia.setPeritodesignado(perito);
+
+        }
+        if (tipopericia == getString(R.string.tipo_morte)) {
+            Toast.makeText(act, "Laudo em local de Morte", Toast.LENGTH_SHORT).show();
+            pericia = new PericiaMorte();
             pericia.setOcorrencia(ocorrencia);
             pericia.setPeritodesignado(perito);
 

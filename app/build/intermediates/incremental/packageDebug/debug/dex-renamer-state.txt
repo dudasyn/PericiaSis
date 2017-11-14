@@ -1,4 +1,4 @@
-#Fri Nov 10 18:16:51 BRST 2017
+#Tue Nov 14 13:59:10 BRST 2017
 base.0=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\95
 renamed.1=classes2.dex
 renamed.0=classes.dex

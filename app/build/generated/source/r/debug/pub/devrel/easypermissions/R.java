@@ -736,7 +736,7 @@ public final class R {
         public static final int rationale_ask_again = 0x7f0e0041;
         public static final int search_menu_title = 0x7f0e0042;
         public static final int status_bar_notification_info_overflow = 0x7f0e0044;
-        public static final int title_settings_dialog = 0x7f0e0050;
+        public static final int title_settings_dialog = 0x7f0e0051;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat = 0x7f0f0000;

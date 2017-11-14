@@ -1305,9 +1305,10 @@ int string tipo_dano 0x7f0e004a
 int string tipo_ipaf_dp 0x7f0e004b
 int string tipo_ipaf_local 0x7f0e004c
 int string tipo_local 0x7f0e004d
-int string tipo_suicidio 0x7f0e004e
-int string tipo_transito 0x7f0e004f
-int string title_settings_dialog 0x7f0e0050
+int string tipo_morte 0x7f0e004e
+int string tipo_suicidio 0x7f0e004f
+int string tipo_transito 0x7f0e0050
+int string title_settings_dialog 0x7f0e0051
 int style AlertDialog_AppCompat 0x7f0f0000
 int style AlertDialog_AppCompat_Light 0x7f0f0001
 int style Animation_AppCompat_Dialog 0x7f0f0002

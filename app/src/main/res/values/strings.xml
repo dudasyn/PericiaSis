@@ -62,6 +62,7 @@
 
     <string-array name="tipo_pericia">
         <item>Local</item>
+        <item>Modelo Morte</item>
         <item>Modelo Ipaf em Veículo na DP</item>
         <item>Modelo Arrombamento</item>
         <item>Modelo Acidente de Trânsito</item>
@@ -71,6 +72,7 @@
     </string-array>
 
     <string name="tipo_local">Local</string>
+    <string name="tipo_morte">Modelo Morte</string>
     <string name="tipo_ipaf_dp">Modelo Ipaf em Veículo na DP</string>
     <string name="tipo_arrombamento">Modelo Arrombamento</string>
     <string name="tipo_transito">Modelo Acidente de Trânsito</string>

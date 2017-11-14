@@ -4078,9 +4078,10 @@ public final class R {
     public static final int tipo_ipaf_dp=0x7f0e004b;
     public static final int tipo_ipaf_local=0x7f0e004c;
     public static final int tipo_local=0x7f0e004d;
-    public static final int tipo_suicidio=0x7f0e004e;
-    public static final int tipo_transito=0x7f0e004f;
-    public static final int title_settings_dialog=0x7f0e0050;
+    public static final int tipo_morte=0x7f0e004e;
+    public static final int tipo_suicidio=0x7f0e004f;
+    public static final int tipo_transito=0x7f0e0050;
+    public static final int title_settings_dialog=0x7f0e0051;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0f0000;
