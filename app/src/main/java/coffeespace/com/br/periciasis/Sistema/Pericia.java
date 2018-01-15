@@ -154,7 +154,9 @@ public class Pericia {
     }
     public String geraDaPreservacao() {
 
-        return "O local não se encontrava preservado, em desacordo com a Resolução Conjunta nº 052/91.";
+        return "O local não se encontrava preservado, em desacordo com a Resolução Conjunta nº 052/91, tendo sido verificado: presença de populares; presença de pessoas não identificadas na área imediata do local; manipulação de objetos no local por pessoas não habilitadas; alteração do posicionamento de objetos sem a orientação técnica adequada; possível alteração do posicionamento da vítima conforme livores identificados no corpo; local lavado previamente à chegada do perito; verificada uma pessoa abraçando e pranteando a vítima; pessoas fumando e jogando bitucas de cigarro no local; houve a tentativa de socorro do cadáver; outros\n " +
+                "O local estava preservado e acautelado por policiamento ostensivo a cargo da PMERJ (Soldado/Sargento/Cabo Fulano RG nº xxx, viatura 54-3206 do xº BPM).";
+
 
     }
     public String geraLocal() {

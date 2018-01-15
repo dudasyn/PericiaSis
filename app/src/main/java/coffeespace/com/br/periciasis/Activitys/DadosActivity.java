@@ -206,9 +206,47 @@ public class DadosActivity extends android.support.v4.app.Fragment {
     class btOutrosElementosClicked implements Button.OnClickListener {
         @Override
         public void onClick(View view) {
+            String marrombamento,macidentetransito,mipaf,mipafnadp,mdano,mlocal,mmorte;
             lvitensconstatacao.setVisibility(View.GONE);
             lvitensoe.setVisibility(View.VISIBLE);
             flag = "oe";
+
+            marrombamento = "(MODELO) Peo de fore processo des laudo.";
+            macidentetransito = "(MODELO) Pelonte dinâmica:";
+            mipaf = "(MODELO)c..";
+            mipafnadp = "Não foi encontrado nenhum componente de munição no interior do veículo.///\n" +
+                    "Não foi possível determinar o número de agentes envolvidos, a quantidade de armas\n" +
+                    "utilizadas e nem especificar a arma/calibre, haja vista a ausência de elementos técnicos\n" +
+                    "geradores de convicção.///\n" +
+                    "A quantidade de disparos e as posições dos IPAFs, convergem para a ação intencional\n" +
+                    "de disparos contra a célula de sobrevivência do veículo.\n" +
+                    "Foram encontrados xx componenetes de projétis de armas de fogo, que foram devidamente coletados e acondicionados em envelope e entregues ao xxx, visando a posterior apreciação da \n" +
+                    "Autoridade Policial requisitante.";
+            mdano = "(MODELO)ca:o decorpo do laudo.";
+            mlocal = "(Mte dinâmica:";
+            mmorte = "(ca:";
+
+            if (ocorrencia.getTipolocal() == getString(R.string.tipo_transito)) {
+                editdados.setText(macidentetransito);
+            }
+            if (ocorrencia.getTipolocal() == getString(R.string.tipo_arrombamento)) {
+                editdados.setText(marrombamento);
+            }
+            if (ocorrencia.getTipolocal() == getString(R.string.tipo_ipaf_local)) {
+                editdados.setText(mipaf);
+            }
+            if (ocorrencia.getTipolocal() == getString(R.string.tipo_ipaf_dp)) {
+                editdados.setText(mipafnadp);
+            }
+            if (ocorrencia.getTipolocal() == getString(R.string.tipo_dano)) {
+                editdados.setText(mdano);
+            }
+            if (ocorrencia.getTipolocal() == getString(R.string.tipo_local)) {
+                editdados.setText(mlocal);
+            }
+            if (ocorrencia.getTipolocal() == getString(R.string.tipo_morte)) {
+                editdados.setText(mmorte);
+            }
 
             if (rdyes.isChecked()) {
                 Toast.makeText(act, "Modo dinâmico não implementado", Toast.LENGTH_SHORT).show();
@@ -232,7 +270,7 @@ public class DadosActivity extends android.support.v4.app.Fragment {
                 Toast.makeText(act, "Modo dinâmico não implementado", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(act, "Dinâmica Livre (inserir)", Toast.LENGTH_SHORT).show();
-                String marrombamento, macidentetransito, mipafnadp, mipaf, mdano, mlocal;
+                String marrombamento, macidentetransito, mipafnadp, mipaf, mdano, mlocal,mmorte;
 
                 marrombamento = "(MODELO) Pelos elementos materiais coligidos no local é o perito levado a inferir a seguinte dinâmica: o agente da ação por meio de objeto contundente/cortante;pérfuro-contundente/pérfuro-cortante, sistema de alavanca e ação de força física] violou o acesso mencionado e adentrou ao imóvel, conforme processo descrito no corpo do laudo. o agente da ação por meio de objeto contundente/cortante;pérfuro-contundente/pérfuro-cortante, sistema de alavanca e ação de força física] violou o acesso mencionado e adentrou ao imóvel, conforme processo descrito no corpo do laudo.";
                 macidentetransito = "(MODELO) Pelos elementos materiais coligidos no local é o perito levado a inferir a seguinte dinâmica:";
@@ -240,6 +278,7 @@ public class DadosActivity extends android.support.v4.app.Fragment {
                 mipafnadp = "(MODELO) Ante a falta de elementos técnicos geradores de convicção, e a característica do exame não ser no local do crime, deixa o Perito de determinar uma completa dinâmica do evento.";
                 mdano = "(MODELO) Pelos elementos materiais coligidos no local é o perito levado a inferir a seguinte dinâmica: o agente da ação por meio de objeto contundente/cortante;pérfuro-contundente/pérfuro-cortante, sistema de alavanca e ação de força física] realizou as avarias descritas conforme processo descrito no corpo do laudo.";
                 mlocal = "(MODELO) Pelos elementos materiais coligidos no local é o perito levado a inferir a seguinte dinâmica:";
+                mmorte = "(MODELO) Pelos elementos materiais coligidos no local é o perito levado a inferir a seguinte dinâmica:";
 
                 if (ocorrencia.getTipolocal() == getString(R.string.tipo_transito)) {
                     editdados.setText(macidentetransito);
@@ -258,6 +297,9 @@ public class DadosActivity extends android.support.v4.app.Fragment {
                 }
                 if (ocorrencia.getTipolocal() == getString(R.string.tipo_local)) {
                     editdados.setText(mlocal);
+                }
+                if (ocorrencia.getTipolocal() == getString(R.string.tipo_morte)) {
+                    editdados.setText(mmorte);
                 }
 
             }
@@ -279,7 +321,7 @@ public class DadosActivity extends android.support.v4.app.Fragment {
                 String marrombamento, macidentetransito, mipafnadp, mipaf, mdano, mlocal, msuicidio,mgene;
 
                 marrombamento = "(MODELO) Ante o exposto [Destaca o signatário não ter sido verificado\n" +
-                        "nos exames vestígios de abertura forçada ou arrombamento nos acessos à área interna do imóvel], conclui o perito ter ocorrido no local objeto do exame um rompimento de \n" +
+                        "nos exames vestígios de abertura forçada ou arrombamento nos acessos à área interna do imóvel], conclui o perito ter ocorrido no local objeto do exame um [rompimento/destruição] de \n" +
                         "obstáculo mediante o emprego de instrumento [contundente/cortante/pérfuro-contundente/pérfuro-cortante], [sistema de alavanca e a ação de força física],\n" +
                         "[desalinhos típicos da busca indiscriminada de valores]. Pelos elementos encontrados fica caracterizado que o agente acessou o estabelecimento periciado, mediante\n" +
                         "[escalada/destreza (tendo em vista a,b,c) através do imóvel vizinho/do muro que delimita a área externa da interna]. Não foi possível identificar a hora do evento bem\n" +

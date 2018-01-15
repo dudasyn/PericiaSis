@@ -2036,14 +2036,21 @@
         <item>formato circular</item>
         <item>formato ovalar</item>
         <item>formato elíptico</item>
+        <item>formato linear</item>
+        <item>formato estrelado</item>
     </string-array><string-array name="direcao_sentido">
         <item>selecione</item>
-        <item>oblíqua ascendente, no sentido da esquerda parada direita</item>
-        <item>oblíqua descendente, no sentido da direita para esquerda</item>
-        <item>oblíqua ascendente, no sentido da esquerda para a direita</item>
-        <item>oblíqua descendente, no sentido da direita para esquerda</item>
-        <item>perpendicular, no sentido da esquerda para a direita</item>
-        <item>perpendicular, no sentido da direita para esquerda</item>
+        <item>oblíqua ascendente, da direita para a esquerda</item>
+        <item>oblíqua ascendente, da esquerda para a direita</item>
+        <item>oblíqua descendente, da direita para esquerda</item>
+        <item>oblíqua descendente, da esquerda para direita</item>
+        <item>oblíqua, da direita para esquerda</item>
+        <item>oblíqua, da esquerda para direita</item>
+        <item>oblíqua descendente</item>
+        <item>oblíqua ascendente</item>
+        <item>oblíqua</item>
+        <item>perpendicular</item>
+
     </string-array><string-array name="origem_ipaf">
         <item>selecione</item>
         <item>do exterior para o interior</item>
