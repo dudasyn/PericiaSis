@@ -4,6 +4,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import coffeespace.com.br.periciasis.Sistema.Objetos.Automovel;
+import coffeespace.com.br.periciasis.Sistema.Objetos.Cadaver;
+import coffeespace.com.br.periciasis.Sistema.Objetos.Caminhao;
+import coffeespace.com.br.periciasis.Sistema.Objetos.Motocicleta;
 import coffeespace.com.br.periciasis.Sistema.Objetos.Objeto;
 import coffeespace.com.br.periciasis.Sistema.Objetos.Onibus;
 import coffeespace.com.br.periciasis.Sistema.Objetos.Veiculo;
@@ -35,64 +39,28 @@ public class PericiaIpaf extends Pericia {
         return "<b>LAUDO DE EXAME EM LOCAL DE IMPACTO DE PROJETIL DE ARMA DE FOGO</b>";
     }
 
-    public String geraConstatacaoVeiculo() {
+    public String geraTabela() {
         String c = "";
-        int nveiculos = getaVeiculosExaminados().size();
+        int nobjetos = getaObjetos().size();
 
-        c = "<ol>";
-        for (int i = 0; i < nveiculos; i++) {
+        c = c + "<ol>";
+        for (int i = 0; i < nobjetos; i++) {
             String caracteristicas = "";
-            int npafs = getaVeiculosExaminados().get(i).getaIpafs().size();
-            if (nveiculos == 1) {
-
-                if (npafs == 1) {
-                    c = c + "<li>Das constatações no Veículo: foi constatado um impacto de projétil de arma de fogo com as seguintes características:</li><br>";
-                } else {
-                    if (npafs > 1) {
-                        c = c + "<li>Das constatações no Veículo: foram constatados impactos de projétis de arma de fogo com as seguintes características:</li><br>";
-                    } else {
-                        c = c + "<li>Das constatações no Veículo:: <b>(IPAF NÃO INSERIDO)</b>:</li><br>";
-                    }
-                }
+            int npafs = getaObjetos().get(i).getaIpafs().size();
 
 
-            } else {
-                if (npafs == 1) {
-                    c = c + "<li>Das constatações em V" + (i + 1) + "(" + getaVeiculosExaminados().get(i).getPlaca() + "): foi constatado um impacto de projétil de arma de fogo com as seguintes características:</li><br>";
-                } else {
-                    if (npafs > 1) {
-                        c = c + "<li>Das constatações em V" + (i + 1) + "(" + getaVeiculosExaminados().get(i).getPlaca() + "): foram constatados impactos de projétis de arma de fogo com as seguintes características:</li><br>";
-
-                    } else {
-                        c = c + "<li>Das constatações em V" + (i + 1) + "(" + getaVeiculosExaminados().get(i).getPlaca() + "):<b> (IPAF NÃO INSERIDO)</b></li><br>";
-                    }
-                }
-
-            }
-            c = c + "<ol><li class=\"lialf\"><table border=1>";
-
+            c = c + "<table border=1>";
             for (int j = 0; j < npafs; j++) {
 
-                String transfixou = "";
-                if (!getaVeiculosExaminados().get(i).getaIpafs().get(j).getTransfixed()) {
-                    transfixou = "transfixante";
-                } else {
-                    transfixou = "não transfixante";
-                }
-                caracteristicas = "impacto " + transfixou + " de " +
-                        formato + ", distando " + distsolo + "m do solo" +
-                        ", apresenta medidas para o eixo  maior de " + eixomaior + " mm, e  " + eixomenor + "mm para o eixo menor, apresentando angulacao de " + angulacao + ", com a seguinte trajetória: " + trajetoria;
-
-
-                formato = getaVeiculosExaminados().get(i).getaIpafs().get(j).getFormato();
-                distsolo = getaVeiculosExaminados().get(i).getaIpafs().get(j).distsolo;
-                angulacao = getaVeiculosExaminados().get(i).getaIpafs().get(j).angulacao;
-                eixomaior = getaVeiculosExaminados().get(i).getaIpafs().get(j).eixomaior;
-                eixomenor = getaVeiculosExaminados().get(i).getaIpafs().get(j).eixomenor;
-                orientacao = getaVeiculosExaminados().get(i).getaIpafs().get(j).getOrientacao();
-                localizacao = getaVeiculosExaminados().get(i).getaIpafs().get(j).getLocalizacao();
-                origem = getaVeiculosExaminados().get(i).getaIpafs().get(j).getOrigem();
-                trajetoria = getaVeiculosExaminados().get(i).getaIpafs().get(j).getTrajetoria();
+                formato = getaObjetos().get(i).getaIpafs().get(j).getFormato();
+                distsolo = getaObjetos().get(i).getaIpafs().get(j).distsolo;
+                angulacao = getaObjetos().get(i).getaIpafs().get(j).angulacao;
+                eixomaior = getaObjetos().get(i).getaIpafs().get(j).eixomaior;
+                eixomenor = getaObjetos().get(i).getaIpafs().get(j).eixomenor;
+                orientacao = getaObjetos().get(i).getaIpafs().get(j).getOrientacao();
+                localizacao = getaObjetos().get(i).getaIpafs().get(j).getLocalizacao();
+                origem = getaObjetos().get(i).getaIpafs().get(j).getOrigem();
+                trajetoria = getaObjetos().get(i).getaIpafs().get(j).getTrajetoria();
 
                 if (empty(formato)) {
                     formato = "[NÃO INSERIDO]";
@@ -109,135 +77,127 @@ public class PericiaIpaf extends Pericia {
                 if (empty(eixomenor)) {
                     eixomenor = "[NÃO INSERIDO]";
                 }
-                c = c + "IPAF " + (j + 1) + ": Impacto de " + formato + ", localizado na " + localizacao + ", de direção " + orientacao + ", origem " + origem + "  trajetoria, sendo identificada a seguinte trajetória: " + trajetoria + "<br>";
 
-                c = c + "<tr><td rowspan=3><b>IPAF " + (j + 1) + "</b></td><td><b>LOCALIZAÇÃO</b></td><td><b>DIREÇÃO E SENTIDO</b></td><td><b>ORIGEM</b></td></tr>" +
+                String transfixou = "";
+                if (!getaObjetos().get(i).getaIpafs().get(j).getTransfixed()) {
+                    transfixou = "transfixante";
+                } else {
+                    transfixou = "não transfixante";
+                }
+                caracteristicas = "impacto " + transfixou + " de " +
+                        formato + ", distando " + distsolo + "m do solo" +
+                        ", apresenta medidas para o eixo  maior de " + eixomaior + " mm, e  " + eixomenor + "mm para o eixo menor, apresentando angulacao de " + angulacao + ", com a seguinte trajetória: " + trajetoria;
+
+
+                c = c + "<tr><td rowspan=3><b>IPAF " + (j + 1) + "</b></td><td><b>Objeto Examinado</b></td><td><b>LOCALIZAÇÃO</b></td><td><b>DIREÇÃO E SENTIDO</b></td><td><b>ORIGEM</b></td></tr>" +
+
+
+                        "<td>" + retTipo(getaObjetos().get(i)) + "</td>" +
                         "<td>" + localizacao + "</td>" +
                         "<td>" + orientacao + "</td>" +
                         "<td>" + origem + "</td>" +
                         "</tr><tr><td colspan=4>Informações adicionais: " + caracteristicas + "</td></tr></tr>";
-            }
-            c = c + "</table>" +
 
-                    "</li></ol>";
+
+            }
+            c = c + "</table>";
+
         }
+        c = c + "</ol>";
+
+/*
+
         for (String item : getaItemConstatacao()) {
             c = c + "<li> " + item + ";</li>";
         }
-        c = c + "</ol>";
+       */
         return c;
     }
+
 
     public String geraConstatacaoObjeto() {
         String c = "";
         int nobjetos = getaVeiculosExaminados().size();
 
-
+        c = c + "<ol>";
         for (int i = 0; i < getaObjetos().size(); i++) {
+
 
             if (!(getaObjetos().get(i) instanceof Veiculo)) {
 
-                /*
-                if (getaObjetos().get(i).getaIpafs().size() == 1) {
-                    c = c + "<li>IPAF no objeto " + getaObjetos().get(i).getNome() + "</li>";
-                } else {
-                    c = c + "<li>Foram constatados os seguintes IPAF's:</li><ol>";
-                    for (int j = 0; j < getaObjetos().get(i).getaIpafs().size(); j++) {
-                        c = c + "<li>IPAF(" + i + ") no objeto " + getaObjetos().get(i).getNome() + "</li>";
-                    }
-                    c = c + "</ol>";
-                }
-                */
-                int npafs = getaObjetos().get(i).getaIpafs().size();
 
+                c = c + "<li> No local foi examinado um(a) " + getaObjetos().get(i).getNome() + " com as seguintes características: " + getaObjetos().get(i).getDescricao() + ";</li>";
 
-                for (int j = 0; j < npafs; j++) {
+            } else {
 
-
-
-                    String transfixou = "";
-                    if (!getaObjetos().get(i).getaIpafs().get(j).getTransfixed()) {
-                        transfixou = "transfixante";
-                    } else {
-                        transfixou = "não transfixante";
-                    }
-
-                    formato = getaObjetos().get(i).getaIpafs().get(j).getFormato();
-                    distsolo = getaObjetos().get(i).getaIpafs().get(j).distsolo;
-                    angulacao =getaObjetos().get(i).getaIpafs().get(j).angulacao;
-                    eixomaior = getaObjetos().get(i).getaIpafs().get(j).eixomaior;
-                    eixomenor = getaObjetos().get(i).getaIpafs().get(j).eixomenor;
-                    orientacao = getaObjetos().get(i).getaIpafs().get(j).getOrientacao();
-                    localizacao = getaObjetos().get(i).getaIpafs().get(j).getLocalizacao();
-                    origem = getaObjetos().get(i).getaIpafs().get(j).getOrigem();
-                    trajetoria = getaObjetos().get(i).getaIpafs().get(j).getTrajetoria();
-
-                    if (empty(formato)) {
-                        formato = "[NÃO INSERIDO]";
-                    }
-                    if (empty(distsolo)) {
-                        distsolo = "[NÃO INSERIDO]";
-                    }
-                    if (empty(angulacao)) {
-                        angulacao = "[NÃO INSERIDO]";
-                    }
-                    if (empty(eixomaior)) {
-                        eixomaior = "[NÃO INSERIDO]";
-                    }
-                    if (empty(eixomenor)) {
-                        eixomenor = "[NÃO INSERIDO]";
-                    }
-
-                    if (getaObjetos().get(i).getaIpafs().size() == 1) {
-                        c = c + "<li>IPAF(" + j + ")  no objeto " + getaObjetos().get(i).getNome() + "</li>";
-                    } else {
-                        c = c + "<li>Foram constatados os seguintes IPAF's:</li><ol>";
-                            c = c + "<li>IPAF " + (j + 1) + ": Impacto de " + formato + ", localizado na " + localizacao + ", de direção " + orientacao + ", origem " + origem + "  trajetoria, sendo identificada a seguinte trajetória: " + trajetoria + "</li><br>";
-
-                        c = c + "</ol>";
-                    }
-
-                }
-                 c = c +  "</li>";
+                c = c + "<li> Das constatações no " + retTipo(getaObjetos().get(i))+  " (" + ((Veiculo) getaObjetos().get(i)).getPlaca() + "): </li>";
             }
 
+            int npafs = getaObjetos().get(i).getaIpafs().size();
+            c = c + "<ol>";
+            for (int j = 0; j < npafs; j++) {
+
+                formato = getaObjetos().get(i).getaIpafs().get(j).getFormato();
+                distsolo = getaObjetos().get(i).getaIpafs().get(j).distsolo;
+                angulacao = getaObjetos().get(i).getaIpafs().get(j).angulacao;
+                eixomaior = getaObjetos().get(i).getaIpafs().get(j).eixomaior;
+                eixomenor = getaObjetos().get(i).getaIpafs().get(j).eixomenor;
+                orientacao = getaObjetos().get(i).getaIpafs().get(j).getOrientacao();
+                localizacao = getaObjetos().get(i).getaIpafs().get(j).getLocalizacao();
+                origem = getaObjetos().get(i).getaIpafs().get(j).getOrigem();
+                trajetoria = getaObjetos().get(i).getaIpafs().get(j).getTrajetoria();
+
+                String transfixou = "";
+                if (!getaObjetos().get(i).getaIpafs().get(j).getTransfixed()) {
+                    transfixou = "transfixante";
+                } else {
+                    transfixou = "não transfixante";
+                }
+
+                if (empty(formato)) {
+                    formato = "[NÃO INSERIDO]";
+                }
+                if (empty(distsolo)) {
+                    distsolo = "[NÃO INSERIDO]";
+                }
+                if (empty(angulacao)) {
+                    angulacao = "[NÃO INSERIDO]";
+                }
+                if (empty(eixomaior)) {
+                    eixomaior = "[NÃO INSERIDO]";
+                }
+                if (empty(eixomenor)) {
+                    eixomenor = "[NÃO INSERIDO]";
+                }
+                if (getaObjetos().get(i).getaIpafs().size() == 1) {
+                    c = c + "<li class=\"lialf\">Impacto de projétil de arma de fogo de " + formato + ", localizado no(a) " + localizacao + ", de direção " + orientacao + ", com origem " + origem + "  trajetoria, sendo identificada a seguinte trajetória: " + trajetoria + "</li>";
+                } else {
+                    c = c + "<li>IPAF(" + (j + 1) + "): Impacto de " + formato + ", localizado no(a) " + localizacao + ", de direção " + orientacao + ", com origem " + origem + "  trajetoria, sendo identificada a seguinte trajetória: " + trajetoria + "</li>";
+                }
+            }
+            c = c + "</ol>";
         }
-
-
+        c = c + "</ol>";
         /*
         for (String item : getaItemConstatacao()) {
             c = c + "<li> " + item + ";</li>";
         }*/
         return c;
-}
-
+    }
 
     public String geraConstatacao() {
 
         String c = "";
 
-        if (!empty(geraConstatacaoVeiculo())) {
-
-            c = c + geraConstatacaoVeiculo();
-        }
-
         if (!empty(geraConstatacaoObjeto())) {
 
             c = c + geraConstatacaoObjeto();
         }
-        /*
-        for (int i = 0; i < getaObjetos().size(); i++) {
+        if (!empty(geraTabela())) {
 
-            if (!(getaObjetos().get(i) instanceof Veiculo)) {
-
-                for (int j = 0; j < getaObjetos().get(i).getaIpafs().size(); j++) {
-                    c = c + "IPAF " + (i + 1) + geraConstatacaoObjeto();
-                }
-            }
+            c = c + geraTabela();
         }
-*/
         return c;
-
     }
 
 
@@ -252,6 +212,33 @@ public class PericiaIpaf extends Pericia {
     public static boolean empty(final String s) {
         // Null-safe, short-circuit evaluation.
         return s == null || s.trim().isEmpty();
+    }
+
+    public String retTipo(Objeto o) {
+
+        String tipo = "";
+        if (o instanceof Veiculo) {
+            if (o instanceof Motocicleta) {
+                tipo = "motocicleta(" +((Motocicleta) o).getPlaca() ;
+            }
+            if (o instanceof Automovel) {
+                tipo = "automóvel(" +((Automovel) o).getPlaca() ;
+            }
+            if (o instanceof Caminhao) {
+                tipo = "caminhão(" +((Caminhao) o).getPlaca() ;
+            }
+            if (o instanceof Onibus) {
+                tipo = "onibus(" +((Onibus) o).getPlaca() ;
+            }
+        }else {
+            if (o instanceof Cadaver) {
+                tipo = "cadáver";
+            }else{
+                tipo = o.getNome();
+            }
+        }
+
+        return tipo;
     }
 
 

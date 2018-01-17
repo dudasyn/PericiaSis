@@ -213,7 +213,14 @@ public class DadosActivity extends android.support.v4.app.Fragment {
 
             marrombamento = "(MODELO) Peo de fore processo des laudo.";
             macidentetransito = "(MODELO) Pelonte dinâmica:";
-            mipaf = "(MODELO)c..";
+            mipaf = "Não foi encontrado nenhum componente de munição no interior do veículo.///\n" +
+                    "Não foi possível determinar o número de agentes envolvidos, a quantidade de armas\n" +
+                    "utilizadas e nem especificar a arma/calibre, haja vista a ausência de elementos técnicos\n" +
+                    "geradores de convicção.///\n" +
+                    "A quantidade de disparos e as posições dos IPAFs, convergem para a ação intencional\n" +
+                    "de disparos contra a célula de sobrevivência do veículo.\n" +
+                    "Foram encontrados xx componenetes de projétis de armas de fogo, que foram devidamente coletados e acondicionados em envelope e entregues ao xxx, visando a posterior apreciação da \n" +
+                    "Autoridade Policial requisitante.";
             mipafnadp = "Não foi encontrado nenhum componente de munição no interior do veículo.///\n" +
                     "Não foi possível determinar o número de agentes envolvidos, a quantidade de armas\n" +
                     "utilizadas e nem especificar a arma/calibre, haja vista a ausência de elementos técnicos\n" +

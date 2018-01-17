@@ -1,7 +1,7 @@
-#Mon Jan 15 21:46:23 BRST 2018
-base.0=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\114
+#Wed Jan 17 12:27:18 BRST 2018
+base.0=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\152
 renamed.1=classes2.dex
 renamed.0=classes.dex
-file.1=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\114\\classes2.dex
-base.1=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\114
-file.0=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\114\\classes.dex
+file.1=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\152\\classes2.dex
+base.1=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\152
+file.0=C\:\\Users\\user\\AndroidStudioProjects\\PericiaSis\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\152\\classes.dex
