@@ -191,7 +191,7 @@ public class CreateFile extends BaseDemoActivity {
                         }
 
                         nomedoarquivo = extras.getString("nomedoarquivo"); //application/vnd.google-apps.document text/html
-                        MetadataChangeSet changeSet = new MetadataChangeSet.Builder().setTitle(nomedoarquivo).setMimeType("text/html").build();
+                        MetadataChangeSet changeSet = new MetadataChangeSet.Builder().setTitle(nomedoarquivo).setMimeType("text/plain").build();
 // create a file on root folder
 
 
