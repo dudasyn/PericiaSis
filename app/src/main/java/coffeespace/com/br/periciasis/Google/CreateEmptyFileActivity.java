@@ -86,7 +86,7 @@ public class CreateEmptyFileActivity extends BaseDemoActivity {
                                     writer.write(laudo);
                                     writer.close();
                                     nomedoarquivo = extras.getString("nomedoarquivo"); //application/vnd.google-apps.document text/html
-                                    MetadataChangeSet changeSet = new MetadataChangeSet.Builder().setTitle(nomedoarquivo).setMimeType("text/html").setStarred(true).build();
+                                    MetadataChangeSet changeSet = new MetadataChangeSet.Builder().setTitle(nomedoarquivo).setMimeType("text/plain").setStarred(true).build();
 // create a file on root folder
                                     Drive.DriveApi.getRootFolder(getGoogleApiClient())
                                             .createFile(getGoogleApiClient(), changeSet, driveContents)
